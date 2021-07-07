@@ -18,7 +18,6 @@
 </template>
 
 <script>
-import PubSub from "pubsub-js";
 export default {
   name: "List",
   data() {
@@ -27,25 +26,13 @@ export default {
     };
   },
   methods: {
-    saveData(_, data) {
+    saveData(data) {
       // console.log("List收到了用户信息:", data);
       this.listInfo = { ...this.listInfo, ...data };
     },
   },
   mounted() {
-    //组件一挂载就绑定事件
-    // this.$bus.$on("get-list-data", this.saveData);
-
-    //组件一挂载就订阅消息
-    PubSub.subscribe("get-list-data", this.saveData);
-  },
-
-  beforeDestroy() {
-    //组件销毁前取消绑定事件
-    // this.$bus.$off('get-list-data')
-
-    // 组件销毁前取消订阅
-    PubSub.unsubscribe(this.token);
+    this.$bus.$on("get-list-data", this.saveData);
   },
 };
 </script>

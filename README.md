@@ -116,7 +116,7 @@
 					mounted() {
 						this.$bus.$on('xxxx',this.yyyyy)
 					}
-				备注：上方的yyyy是回调，yyy需要配置在组件的methos属性中
+				备注：上方的yyyy是回调，yyyyy需要配置在组件的methos属性中
 		(3).要提供数据的组件中触发事件：this.$bus.$emit('xxxx',数据)
 		(4).备注：
 						1.谁接数据，谁就$on('xxx-xxx',this.yyy)
